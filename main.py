@@ -8,30 +8,32 @@ categorical_options = {
     'Marital Status': ['Unmarried', 'Married'],
     'BMI Category': ['Normal', 'Obesity', 'Overweight', 'Underweight'],
     'Smoking Status': ['No Smoking', 'Regular', 'Occasional'],
-    'Employment Status': ['Salaried', 'Self-Employed', 'Freelancer'],
+    'Employment Status': ['Salaried', 'Self-Employed', 'Freelancer', ''],
     'Region': ['Northwest', 'Southeast', 'Northeast', 'Southwest'],
     'Medical History': [
         'No Disease', 'Diabetes', 'High blood pressure', 'Diabetes & High blood pressure',
-        'Thyroid', 'Heart disease', 'High blood pressure & Heart disease',
-        'Diabetes & Thyroid', 'Diabetes & Heart disease'
+        'Thyroid', 'Heart disease', 'High blood pressure & Heart disease', 'Diabetes & Thyroid',
+        'Diabetes & Heart disease'
     ],
     'Insurance Plan': ['Bronze', 'Silver', 'Gold']
 }
 
+# Create four rows of three columns each
 row1 = st.columns(3)
 row2 = st.columns(3)
 row3 = st.columns(3)
 row4 = st.columns(3)
 
+# Assign inputs to the grid
 with row1[0]:
-    age = st.number_input('Age', min_value=18, max_value=100, step=1)
+    age = st.number_input('Age', min_value=18, step=1, max_value=100)
 with row1[1]:
-    number_of_dependants = st.number_input('Number of Dependants', min_value=0, max_value=20, step=1)
+    number_of_dependants = st.number_input('Number of Dependants', min_value=0, step=1, max_value=20)
 with row1[2]:
-    income_lakhs = st.number_input('Income in Lakhs', min_value=0, max_value=200, step=1)
+    income_lakhs = st.number_input('Income in Lakhs', step=1, min_value=0, max_value=200)
 
 with row2[0]:
-    genetical_risk = st.number_input('Genetical Risk', min_value=0, max_value=5, step=1)
+    genetical_risk = st.number_input('Genetical Risk', step=1, min_value=0, max_value=5)
 with row2[1]:
     insurance_plan = st.selectbox('Insurance Plan', categorical_options['Insurance Plan'])
 with row2[2]:
@@ -51,6 +53,7 @@ with row4[1]:
 with row4[2]:
     medical_history = st.selectbox('Medical History', categorical_options['Medical History'])
 
+# Create a dictionary for input values
 input_dict = {
     'Age': age,
     'Number of Dependants': number_of_dependants,
@@ -66,9 +69,11 @@ input_dict = {
     'Medical History': medical_history
 }
 
-if st.button("Predict"):
+# Button to make prediction
+if st.button('Predict'):
     prediction = predict(input_dict)
-    st.success(f"Predicted Health Insurance Cost: ₹{prediction}")
+    st.success(f'Predicted Health Insurance Cost: {prediction}')
+
 
 
 
