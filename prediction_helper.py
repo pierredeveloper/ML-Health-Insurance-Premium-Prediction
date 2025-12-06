@@ -2,26 +2,26 @@ import pandas as pd
 from joblib import load
 import os
 
-# Correct path handling
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-ARTIFACT_PATH = os.path.join(BASE_DIR, "app", "artifacts")
-
-# Load models
-model_rest = load(os.path.join(ARTIFACT_PATH, "model_rest.joblib"))
-model_young = load(os.path.join(ARTIFACT_PATH, "model_young.joblib"))
-
-# Load scalers
-scaler_rest = load(os.path.join(ARTIFACT_PATH, "scaler_rest.joblib"))
-scaler_young = load(os.path.join(ARTIFACT_PATH, "scaler_young.joblib"))
+# # Correct path handling
+# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# ARTIFACT_PATH = os.path.join(BASE_DIR, "app", "artifacts")
+#
+# # Load models
+# model_rest = load(os.path.join(ARTIFACT_PATH, "model_rest.joblib"))
+# model_young = load(os.path.join(ARTIFACT_PATH, "model_young.joblib"))
+#
+# # Load scalers
+# scaler_rest = load(os.path.join(ARTIFACT_PATH, "scaler_rest.joblib"))
+# scaler_young = load(os.path.join(ARTIFACT_PATH, "scaler_young.joblib"))
 
 
 # #Load models
-# model_rest = load("app/artifacts/model_rest.joblib")
-# model_young = load("app/artifacts/model_young.joblib")
-#
-# #Load scalers
-# scaler_rest = load("app/artifacts/scaler_rest.joblib")
-# scaler_young = load("app/artifacts/scaler_young.joblib")
+model_rest = load("artifacts/model_rest.joblib")
+model_young = load("artifacts/model_young.joblib")
+
+#Load scalers
+scaler_rest = load("artifacts/scaler_rest.joblib")
+scaler_young = load("artifacts/scaler_young.joblib")
 
 
 def calculate_normalized_risk(medical_history):
